@@ -1,0 +1,17 @@
+D:\MyFinance\App\Application\obj\Debug\net7.0\Application.csproj.AssemblyReference.cache
+D:\MyFinance\App\Application\obj\Debug\net7.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyFinance\App\Application\obj\Debug\net7.0\Application.AssemblyInfoInputs.cache
+D:\MyFinance\App\Application\obj\Debug\net7.0\Application.AssemblyInfo.cs
+D:\MyFinance\App\Application\obj\Debug\net7.0\Application.csproj.CoreCompileInputs.cache
+D:\MyFinance\App\Application\bin\Debug\net7.0\Application.deps.json
+D:\MyFinance\App\Application\bin\Debug\net7.0\Application.dll
+D:\MyFinance\App\Application\bin\Debug\net7.0\Application.pdb
+D:\MyFinance\App\Application\bin\Debug\net7.0\Domain.dll
+D:\MyFinance\App\Application\bin\Debug\net7.0\Persistence.dll
+D:\MyFinance\App\Application\bin\Debug\net7.0\Domain.pdb
+D:\MyFinance\App\Application\bin\Debug\net7.0\Persistence.pdb
+D:\MyFinance\App\Application\obj\Debug\net7.0\Application.csproj.CopyComplete
+D:\MyFinance\App\Application\obj\Debug\net7.0\Application.dll
+D:\MyFinance\App\Application\obj\Debug\net7.0\refint\Application.dll
+D:\MyFinance\App\Application\obj\Debug\net7.0\Application.pdb
+D:\MyFinance\App\Application\obj\Debug\net7.0\ref\Application.dll
