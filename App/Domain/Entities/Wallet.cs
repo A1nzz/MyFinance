@@ -1,8 +1,11 @@
-﻿namespace Domain.Entities
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace Domain.Entities
 {
-    public class Wallet : Entity
+    public partial class Wallet : Entity
     {
-        public double Balance { get; set; }
+        [ObservableProperty]
+        double balance;
         public int UserId { get; set; }
 
 

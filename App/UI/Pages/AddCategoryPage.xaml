@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:UI.ViewModels"    
+             xmlns:entities="clr-namespace:Domain.Entities;assembly=Domain"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:convertions="clr-namespace:Ui.ValueConverters"
+             x:DataType="models:AddCategoryViewModel"
+             x:Class="UI.Pages.AddCategoryPage"
+             Title="Add Category">
+    <ContentPage.Resources>
+        <convertions:IsIncomeColorValueConverter x:Key="IsIncomeConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing" Command="{Binding UpdateCategoriesListCommand }"/>
+    </ContentPage.Behaviors>
+    <ScrollView>
+        <VerticalStackLayout>
+            <Entry Text="{Binding CategoryName}" Placeholder="Name"  WidthRequest="200" VerticalOptions="Center" Margin="0, 10"/>
+            <Picker x:Name="TypePicker"
+                HorizontalOptions="CenterAndExpand"
+                Margin="100, 10, 100, 10"
+                Title="Select type"
+                BackgroundColor="Gray"
+                TextColor="Black"
+                SelectedItem="{Binding SelectedCategoryType}"
+
+                FontSize="Medium"
+                Grid.Row="0">
+                <Picker.Items>
+                    <x:String>Withdraw</x:String>
+                    <x:String>Deposit</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button Text="Add Category" WidthRequest="200" VerticalOptions="Center" Command="{Binding AddCatCommand }"></Button>
+            <CollectionView x:Name="TransactionView"
+                        ItemsSource="{Binding CategoriesList}"
+                        HorizontalOptions="FillAndExpand"
+                        Margin="100, 0, 100, 0"
+                        BackgroundColor="White">
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate x:Name="TransactionItem"
+                              x:DataType="entities:Category">
+                        <Frame BackgroundColor="{Binding Type, Converter={StaticResource IsIncomeConverter}}">
+
+
+                            <Grid RowDefinitions="*, *"
+                          ColumnDefinitions="*,Auto"
+                          RowSpacing="8">
+                                <Label Grid.Row="0"
+                                   Text="{Binding Id, StringFormat='Category: {0}'}"
+                                   TextColor="#000"
+                                   FontSize="Medium"
+                                   HorizontalOptions="Fill"
+                                   VerticalOptions="Fill"
+                                   FontAutoScalingEnabled="True">
+                                </Label>
+                                <Label Grid.Row="1"
+                                   Text="{Binding Name, StringFormat='Name: {0}'}"
+                                   TextColor="#000"
+                                   FontSize="Medium"
+                                   HorizontalOptions="Fill"
+                                   VerticalOptions="Fill"
+                                   FontAutoScalingEnabled="True">
+                                </Label>
+
+                                <Button Grid.Row="0" Grid.RowSpan ="2"
+                                HeightRequest="20"
+                                WidthRequest="20"
+                                Grid.Column="1"
+                                HorizontalOptions="End"
+                                Text="X"
+                                BackgroundColor="#fff"
+                                TextColor="#000"
+                                        CornerRadius ="20"
+                                Command="{Binding 
+                                Source={RelativeSource AncestorType={x:Type models:AddCategoryViewModel} },
+                                    Path=DoRemoveCommand}"
+                                CommandParameter="{Binding}" />
+
+
+
+
+                            </Grid>
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:UI.ViewModels"    
+             xmlns:entities="clr-namespace:Domain.Entities;assembly=Domain"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             x:Class="UI.Pages.PieChartPage"
+             x:DataType="models:PieChartViewModel"
+             
+             Title="PieChartPage">
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearCommand }"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Pie"
+                   TargetType="lvc:PieChart">
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="HeightRequest"
+                        Value="300" />
+                <Setter Property="LegendPosition"
+                        Value="Hidden" />
+                <Setter Property="Margin"
+                        Value="50,50,50,50" />
+
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout>
+            <lvc:PieChart Series="{Binding IncomeByCategorySeries}"
+                          Title="{Binding IncomeByCategoryTitle}"
+                          Style="{StaticResource Pie}">
+            </lvc:PieChart>
+            <lvc:PieChart Series="{Binding ExpenseByCategorySeries}"
+                          Title="{Binding ExpenseByCategoryTitle}"
+                          Style="{StaticResource Pie}">
+            </lvc:PieChart>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

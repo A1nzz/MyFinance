@@ -1,13 +1,15 @@
 ﻿using Domain.Entities;
+using System.Linq.Expressions;
 
 namespace Application.Abstractions
 {
     public interface IBaseService<T> where T : Entity
     {
-        IReadOnlyList<T> GetAll();
-        T GetById(int id);
-        void Add(T item);
-        void Update(T item);
-        void Delete(T item);
+        Task<IReadOnlyList<T>> GetAllAsync();
+        Task<T> GetByIdAsync(int id);
+        Task AddAsync(T item);
+        Task UpdateAsync(T item);
+        Task DeleteAsync(T item);
+        Task SaveChangesAsync();
     }
 }

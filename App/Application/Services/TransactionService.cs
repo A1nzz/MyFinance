@@ -18,29 +18,34 @@ namespace Application.Services
             _unitOfWork = unitOfWork;
         }
 
-        public void Add(Transaction item)
+        public Task AddAsync(Transaction item)
         {
-            _unitOfWork.TransactionRepository.Add(item);
+            return _unitOfWork.TransactionRepository.AddAsync(item);
         }
 
-        public void Delete(Transaction item)
+        public Task DeleteAsync(Transaction item)
         {
-            _unitOfWork.TransactionRepository.Delete(item);
+            return _unitOfWork.TransactionRepository.DeleteAsync(item);
         }
 
-        public IReadOnlyList<Transaction> GetAll()
+        public Task SaveChangesAsync()
         {
-            return _unitOfWork.TransactionRepository.ListAll();
+            return _unitOfWork.SaveAllAsync();
         }
 
-        public Transaction GetById(int id)
+        public Task UpdateAsync(Transaction item)
         {
-            return _unitOfWork.TransactionRepository.GetById(id);
+            return _unitOfWork.TransactionRepository.UpdateAsync(item);
         }
 
-        public void Update(Transaction item)
+        Task<IReadOnlyList<Transaction>> IBaseService<Transaction>.GetAllAsync()
         {
-            _unitOfWork.TransactionRepository.Update(item);
+            return _unitOfWork.TransactionRepository.ListAllAsync();
+        }
+
+        Task<Transaction> IBaseService<Transaction>.GetByIdAsync(int id)
+        {
+            return _unitOfWork.TransactionRepository.GetByIdAsync(id);
         }
     }
 

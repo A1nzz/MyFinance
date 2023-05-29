@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="UI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:UI"
+    xmlns:pages="clr-namespace:UI.Pages"
+    xmlns:models="clr-namespace:UI.ViewModels"    
+             xmlns:entities="clr-namespace:Domain.Entities;assembly=Domain"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="models:AppShellViewModel">
+
+
+    <ShellContent FlyoutItemIsVisible="False" Shell.FlyoutBehavior="Disabled"
+        Title="LogIn"
+        ContentTemplate="{DataTemplate pages:LogInPage}"
+        Route="LogInPage" />
+    <ShellContent FlyoutItemIsVisible="False" Shell.FlyoutBehavior="Disabled"
+        Title="Registration"
+        ContentTemplate="{DataTemplate pages:RegisterPage}"
+        Route="RegisterPage" />
+    <FlyoutItem Route="DashboardPage" FlyoutItemIsVisible="False">
+        
+        <Tab Title="Transactions">
+            <ShellContent
+                Title="Withdraw"
+                ContentTemplate="{DataTemplate pages:MainPage}"
+                Route="MainPage" />
+            <ShellContent
+                Title="Deposit"
+                ContentTemplate="{DataTemplate pages:DepositPage}"
+                Route="DepositPage" />
+        </Tab>
+
+        <ShellContent
+        Title="Add Category"
+        ContentTemplate="{DataTemplate pages:AddCategoryPage}"
+        Route="AddCategoryPage" />
+        <ShellContent
+        Title="Add Wallet"
+        ContentTemplate="{DataTemplate pages:AddWalletPage}"
+        Route="AddWalletPage" />
+        <ShellContent
+        Title="Transactions History"
+        ContentTemplate="{DataTemplate pages:TransactionsHistoryPage}"
+        Route="TransactionsHistoryPage" />
+
+    </FlyoutItem>
+    <Shell.FlyoutFooter>
+        <Button Text="LogOut" Command="{Binding LogOutCommand}"></Button>
+    </Shell.FlyoutFooter>
+
+
+
+
+
+</Shell>

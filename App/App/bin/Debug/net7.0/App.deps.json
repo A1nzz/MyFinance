@@ -15,8 +15,10 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.5",
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.Configuration.FileExtensions": "7.0.0",
+          "Microsoft.Extensions.Configuration.Json": "7.0.0",
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
-          "Persistence": "1.0.0"
+          "Persistence": "1.0.0",
+          "Serializers": "1.0.0"
         },
         "runtime": {
           "App.dll": {}
@@ -159,6 +161,21 @@
         },
         "runtime": {
           "lib/net7.0/Microsoft.Extensions.Configuration.FileExtensions.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51805"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Json/7.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "7.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "7.0.0",
+          "Microsoft.Extensions.FileProviders.Abstractions": "7.0.0",
+          "System.Text.Json": "7.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.Extensions.Configuration.Json.dll": {
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.0.22.51805"
           }
@@ -446,10 +463,16 @@
       "Persistence/1.0.0": {
         "dependencies": {
           "Domain": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "7.0.5"
+          "Microsoft.EntityFrameworkCore": "7.0.5",
+          "Microsoft.EntityFrameworkCore.Sqlite": "7.0.5"
         },
         "runtime": {
           "Persistence.dll": {}
+        }
+      },
+      "Serializers/1.0.0": {
+        "runtime": {
+          "Serializers.dll": {}
         }
       }
     }
@@ -557,6 +580,13 @@
       "sha512": "sha512-xk2lRJ1RDuqe57BmgvRPyCt6zyePKUmvT6iuXqiHR+/OIIgWVR8Ff5k2p6DwmqY8a17hx/OnrekEhziEIeQP6Q==",
       "path": "microsoft.extensions.configuration.fileextensions/7.0.0",
       "hashPath": "microsoft.extensions.configuration.fileextensions.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Json/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LDNYe3uw76W35Jci+be4LDf2lkQZe0A7EEYQVChFbc509CpZ4Iupod8li4PUXPBhEUOFI/rlQNf5xkzJRQGvtA==",
+      "path": "microsoft.extensions.configuration.json/7.0.0",
+      "hashPath": "microsoft.extensions.configuration.json.7.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyInjection/7.0.0": {
       "type": "package",
@@ -688,6 +718,11 @@
       "sha512": ""
     },
     "Persistence/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Serializers/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

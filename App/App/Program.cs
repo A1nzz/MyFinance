@@ -2,15 +2,12 @@
 using Microsoft.Extensions.DependencyInjection;
 using Application.Abstractions;
 using Domain.Abstractions;
-using Persistence.Repository;
 using Persistence.Data;
 using Application.Services;
 using Domain.Entities;
+using Persistence.Repository;
+using Serializers;
 
-using System;
-using System.IO;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
 
 class Program
 {
@@ -18,6 +15,7 @@ class Program
     
     static void Main(string[] args)
     {
+
 
         // Создание конфигурации приложения
         var configuration = new ConfigurationBuilder()
@@ -322,6 +320,45 @@ class Program
         }
 
 
+        void CheckSerializer()
+        {
+            
+                Serializer serializer = new();
+
+                Console.WriteLine("Выберите коллекцию для сериализации:\n " +
+                    "1 - Category\n" +
+                    "2 - Wallet\n" +
+                    "3 - User\n" +
+                    "4 - Transaction");
+                int command = Convert.ToInt32(Console.ReadLine());
+                if (command == 1)
+                {
+                    List<Category> catLst = categoryService?.GetAll().ToList()!;
+                    serializer.SerializeJson(catLst, "json_data.json");
+                }
+                else if (command == 2)
+                {
+                    List<Wallet> catLst = walletService?.GetAll().ToList()!;
+                    serializer.SerializeJson(catLst, "json_data.json");
+                }
+                else if (command == 3)
+                {
+                    List<User> catLst = userService?.GetAll().ToList()!;
+                    serializer.SerializeJson(catLst, "json_data.json");
+                }
+                else if (command == 4)
+                {
+                    List<Transaction> catLst = transactionService?.GetAll().ToList()!;
+                    serializer.SerializeJson(catLst, "json_data.json");
+                }
+                else
+                {
+                    Console.WriteLine("Такой коллекции нет!");
+                }
+            
+
+        }
+
 
         // Валидация email
         static bool IsValidEmail(string email)
@@ -351,7 +388,8 @@ class Program
                           "2 - для добавления категории\n" +
                           "3 - для создания транзакции\n" +
                           "4 - для добавления счета\n"+
-                          "5 - показать содержимое репозиториев");
+                          "5 - показать содержимое репозиториев\n" +
+                          "6 - проверить работу сериалайзера");
             int command = Convert.ToInt32(Console.ReadLine());
             if(command == 0)
             {
@@ -376,6 +414,12 @@ class Program
             } else if (command == 5)
             {
                 ShowReps();
+            } else if (command == 6)
+            {
+                CheckSerializer();
+            } else
+            {
+                Console.WriteLine("Такой комманды нет");
             }
         }
         

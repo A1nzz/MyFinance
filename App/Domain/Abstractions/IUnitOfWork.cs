@@ -4,10 +4,14 @@ namespace Domain.Abstractions
 {
     public interface IUnitOfWork
     {
-        IRepository<Category> CategoryRepository { get; }
-        IRepository<Transaction> TransactionRepository { get; }
-        IRepository<User> UserRepository { get; }
-        IRepository<Wallet> WalletRepository { get; }
+        IEfRepository<Category> CategoryRepository { get; }
+        IEfRepository<Transaction> TransactionRepository { get; }
+        IEfRepository<User> UserRepository { get; }
+        IEfRepository<Wallet> WalletRepository { get; }
+
+        public Task RemoveDatbaseAsync();
+        public Task CreateDatabaseAsync();
+        public Task SaveAllAsync();
 
     }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:UI.ViewModels"    
+             xmlns:entities="clr-namespace:Domain.Entities;assembly=Domain"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="models:LogInViewModel"
+             x:Class="UI.Pages.LogInPage"
+             Title="LogInPage">
+    <VerticalStackLayout>
+        <Entry Text="{Binding Email}" Placeholder="email"  WidthRequest="200" VerticalOptions="Center" Margin="0, 10"/>
+        <Entry Text="{Binding Password}" Placeholder="password"  WidthRequest="200" VerticalOptions="Center" Margin="0, 10" IsPassword="True"/>
+        <Button Text="LogIn" WidthRequest="200" VerticalOptions="Center" Command="{Binding LogInCommand }"></Button>
+        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center" Margin="0, 10">
+            <Label Text="Don't have an account?" TextColor="Gray" />
+            <Label Text="Sign Up here" TextColor="#50b3f2">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToRegisterPageCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

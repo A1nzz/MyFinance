@@ -5,7 +5,7 @@ using Persistence.Data;
 using System;
 namespace Persistence.Repository
 {
-    public class UnitOfWork : IUnitOfWork
+/*    public class UnitOfWork : IUnitOfWork
     {
         private readonly MyFinanceContext _context;
         private readonly Lazy<IRepository<Category>> _categoryRepository;
@@ -27,5 +27,5 @@ namespace Persistence.Repository
         IRepository<Transaction> IUnitOfWork.TransactionRepository => _transactionRepository.Value;
         IRepository<User> IUnitOfWork.UserRepository => _userRepository.Value;
         IRepository<Wallet> IUnitOfWork.WalletRepository => _walletRepository.Value;
-    }
+    }*/
 }

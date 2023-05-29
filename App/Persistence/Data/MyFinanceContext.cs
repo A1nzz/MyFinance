@@ -1,20 +1,19 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Persistence.Data {
     public class MyFinanceContext : DbContext
     {
-        public List<Category> Categories { get; set; } = new();
-        public List<User> Users { get; set; } = new();
-        public List<Wallet> Wallets { get; set; } = new();
-        public List<Transaction> Transactions { get; set; } = new();
+        public DbSet<Category> Categories { get; set; } 
+        public DbSet<User> Users { get; set; }
+        public DbSet<Wallet> Wallets { get; set; } 
+        public DbSet<Transaction> Transactions { get; set; }
 
-        
-
-
-        public MyFinanceContext()
+        public MyFinanceContext(DbContextOptions<MyFinanceContext> options)
+            : base(options)
         {
-         
+            Database.EnsureCreated();
         }
 
 

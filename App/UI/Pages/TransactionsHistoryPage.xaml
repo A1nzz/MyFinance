@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:UI.ViewModels"    
+             xmlns:entities="clr-namespace:Domain.Entities;assembly=Domain"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:convertions="clr-namespace:Ui.ValueConverters"
+    
+             x:DataType="models:TransactionsHistoryViewModel"
+             x:Class="UI.Pages.TransactionsHistoryPage"
+             Title="TransactionsHistoryPage">
+    <ContentPage.Resources>
+        <convertions:IsIncomeColorValueConverter x:Key="IsIncomeConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing" Command="{Binding UpdateTransactionsListCommand }"/>
+    </ContentPage.Behaviors>
+    <ScrollView>
+        
+        <VerticalStackLayout>
+            <Button Text="Show stat" WidthRequest="200" VerticalOptions="Center" Command="{Binding ShowStatisticsCommand}"></Button>
+
+            <CollectionView x:Name="TransactionView"
+                        ItemsSource="{Binding TransactionsHistoryList}"
+                        HorizontalOptions="FillAndExpand"
+                        Margin="100, 0, 100, 0"
+                        BackgroundColor="Black"
+                        >
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate x:Name="TransactionItem"
+                              x:DataType="entities:Transaction"
+                              >
+                        <Frame BackgroundColor="{Binding Type, Converter={StaticResource IsIncomeConverter}}">
+
+
+                            <Grid RowDefinitions="*,*,*,*,*"
+                          ColumnDefinitions="*,Auto"
+                          RowSpacing="8" >
+
+
+                                <Label Grid.Row="0"
+                                   Text="{Binding Id, StringFormat='Transaction: {0}'}"
+                                   FontSize="Medium"
+                                   HorizontalOptions="Fill"
+                                   VerticalOptions="Fill"
+                                   FontAutoScalingEnabled="True"
+                                   TextColor="#000">
+                                </Label>
+
+                                <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="{Binding Date, StringFormat='Date: {0:d}'}"
+                               FontSize="Medium"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"
+                               FontAutoScalingEnabled="True"
+                               HeightRequest="40">
+                                </Label>
+                                <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Text="{Binding Amount, StringFormat='Amount: {0}'}"
+                               FontSize="Medium"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"
+                               FontAutoScalingEnabled="True"
+                               HeightRequest="40"
+                               >
+                                </Label>
+                                <Label Grid.Row="3"
+                                   
+                               Grid.Column="0"
+                               Text="{Binding TransactionCategory.Name, StringFormat='Category: {0}'}"
+                               FontSize="Medium"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"
+                               FontAutoScalingEnabled="True"
+                               HeightRequest="40">
+                                </Label>
+                                <Button Grid.Row="0" Grid.RowSpan ="2"
+                                HeightRequest="20"
+                                WidthRequest="20"
+                                Grid.Column="1"
+                                HorizontalOptions="End"
+                                Text="X"
+                                BackgroundColor="#fff"
+                                TextColor="#000"
+                                Command="{Binding 
+                                Source={RelativeSource AncestorType={x:Type models:TransactionsHistoryViewModel} },
+                                    Path=DoRemoveCommand}"
+                                CommandParameter="{Binding}" />
+                            </Grid>
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

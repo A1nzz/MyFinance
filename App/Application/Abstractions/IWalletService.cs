@@ -4,7 +4,7 @@ namespace Application.Abstractions
 {
     public interface IWalletService : IBaseService<Wallet>
     {
-        void Deposit(Wallet wallet, double amount);
-        void Withdraw(Wallet wallet, double amount);
+        Task Deposit(Wallet wallet, double amount);
+        Task Withdraw(Wallet wallet, double amount);
     }
 }

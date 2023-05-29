@@ -18,29 +18,34 @@ namespace Application.Services
         {
             _unitOfWork = unit;
         }
-        public void Add(Category item)
+        public Task AddAsync(Category item)
         {
-            _unitOfWork.CategoryRepository.Add(item);
+            return _unitOfWork.CategoryRepository.AddAsync(item);
         }
 
-        public void Delete(Category item)
+        public Task DeleteAsync(Category item)
         {
-            _unitOfWork.CategoryRepository.Delete(item);
+            return _unitOfWork.CategoryRepository.DeleteAsync(item);
         }
 
-        public IReadOnlyList<Category> GetAll()
+        public Task SaveChangesAsync()
         {
-            return _unitOfWork.CategoryRepository.ListAll();
+            return _unitOfWork.SaveAllAsync();
         }
 
-        public Category GetById(int id)
+        public Task UpdateAsync(Category item)
         {
-            return _unitOfWork.CategoryRepository.GetById(id);
+            return _unitOfWork.CategoryRepository.UpdateAsync(item);
         }
 
-        public void Update(Category item)
+        Task<IReadOnlyList<Category>> IBaseService<Category>.GetAllAsync()
         {
-            _unitOfWork.CategoryRepository.Update(item);
+            return _unitOfWork.CategoryRepository.ListAllAsync();
+        }
+
+        Task<Category> IBaseService<Category>.GetByIdAsync(int id)
+        {
+            return _unitOfWork.CategoryRepository.GetByIdAsync(id);
         }
     }
 }

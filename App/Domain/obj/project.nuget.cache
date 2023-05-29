@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "ISVMD8GWdgcaSNllvlc3AyW3Bj8wY7TgyJ8OahYkKboWkAaVDVfxWT2Ljx8P32VFHFxaGFdgNfK9GU2hHGRTwQ==",
+  "dgSpecHash": "KUQYpyM6barYnhxNZOpnDeZx41nHemBKj+rU65m8CAlLVWBCPgLKZIl3VHIHsbQntfK9mjXBOq+JFFzkTcyaAQ==",
   "success": true,
   "projectFilePath": "D:\\MyFinance\\App\\Domain\\Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Кирилл\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.0\\communitytoolkit.mvvm.8.2.0.nupkg.sha512",
+    "C:\\Users\\Кирилл\\.nuget\\packages\\sqlite-net-pcl\\1.8.116\\sqlite-net-pcl.1.8.116.nupkg.sha512",
+    "C:\\Users\\Кирилл\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.0.4\\sqlitepclraw.bundle_green.2.0.4.nupkg.sha512",
+    "C:\\Users\\Кирилл\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
+    "C:\\Users\\Кирилл\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.4\\sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",
+    "C:\\Users\\Кирилл\\.nuget\\packages\\sqlitepclraw.provider.dynamic_cdecl\\2.0.4\\sqlitepclraw.provider.dynamic_cdecl.2.0.4.nupkg.sha512",
+    "C:\\Users\\Кирилл\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+  ],
   "logs": []
 }

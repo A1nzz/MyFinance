@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:UI.ViewModels"    
+             xmlns:entities="clr-namespace:Domain.Entities;assembly=Domain"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="models:DepositViewModel"
+             x:Class="UI.Pages.DepositPage"
+             Title="DepositPage">
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing" Command="{Binding UpdateDepositCatListCommand }"/>
+        <toolkit:EventToCommandBehavior EventName="Appearing" Command="{Binding UpdateDepositWalletListCommand }"/>
+    </ContentPage.Behaviors>
+
+    <VerticalStackLayout>
+        <Entry Text="{Binding DepositAmount}" Placeholder="Amount" WidthRequest="200" VerticalOptions="Center" Margin="0, 10"/>
+        <Entry Text="{Binding DepositDescription}" Placeholder="Description" WidthRequest="200" VerticalOptions="Center" Margin="0, 10"/>
+
+        <Picker x:Name="CatPicker"
+                HorizontalOptions="CenterAndExpand"
+                Margin="100, 10, 100, 10"
+                Title="Select category"
+                BackgroundColor="Gray"
+                TextColor="Black"
+                ItemsSource="{Binding DepositCategories}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding DepositSelectedCategory}"
+
+                FontSize="Medium"
+                Grid.Row="0">
+        </Picker>
+
+        <Picker x:Name="WalletPicker"
+                HorizontalOptions="CenterAndExpand"
+                Margin="100, 10, 100, 10"
+                Title="Select wallet"
+                BackgroundColor="Gray"
+                TextColor="Black"
+                ItemsSource="{Binding DepositWallets}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding DepositSelectedWallet}"
+
+                FontSize="Medium"
+                Grid.Row="0">
+        </Picker>
+        <DatePicker MinimumDate="05/01/2023"
+            MaximumDate="12/31/2030"
+            Date="{Binding DepositSelectedDate}" HorizontalOptions="CenterAndExpand"/>
+
+
+        <Button Text="Deposit" WidthRequest="200" Command="{Binding CreateDepositCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

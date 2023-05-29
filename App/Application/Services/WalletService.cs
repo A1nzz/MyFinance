@@ -7,47 +7,51 @@ namespace Application.Services
     public class WalletService : IWalletService
     {
         private readonly IUnitOfWork _unitOfWork;
-
         public WalletService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-
-        public void Add(Wallet item)
+        
+        public Task AddAsync(Wallet item)
         {
-            _unitOfWork.WalletRepository.Add(item);
+            return _unitOfWork.WalletRepository.AddAsync(item);
         }
 
-        public void Delete(Wallet item)
+        public Task DeleteAsync(Wallet item)
         {
-            _unitOfWork.WalletRepository.Delete(item);
+            return _unitOfWork.WalletRepository.DeleteAsync(item);
         }
 
-        public IReadOnlyList<Wallet> GetAll()
+        public Task SaveChangesAsync()
         {
-            return _unitOfWork.WalletRepository.ListAll();
+            return _unitOfWork.SaveAllAsync();
         }
 
-        public Wallet GetById(int id)
+        public Task UpdateAsync(Wallet item)
         {
-            return _unitOfWork.WalletRepository.GetById(id);
+            return _unitOfWork.WalletRepository.UpdateAsync(item);
         }
 
-        public void Update(Wallet item)
+        Task<IReadOnlyList<Wallet>> IBaseService<Wallet>.GetAllAsync()
         {
-            _unitOfWork.WalletRepository.Update(item);
+            return _unitOfWork.WalletRepository.ListAllAsync();
         }
 
-        public void Deposit(Wallet wallet, double amount)
+        Task<Wallet> IBaseService<Wallet>.GetByIdAsync(int id)
+        {
+            return _unitOfWork.WalletRepository.GetByIdAsync(id);
+        }
+
+        public Task Deposit(Wallet wallet, double amount)
         {
             wallet.Balance += amount;
-            _unitOfWork.WalletRepository.Update(wallet);
+            return _unitOfWork.WalletRepository.UpdateAsync(wallet);
         }
 
-        public void Withdraw(Wallet wallet, double amount)
+        public Task Withdraw(Wallet wallet, double amount)
         {
             wallet.Balance -= amount;
-            _unitOfWork.WalletRepository.Update(wallet);
+           return  _unitOfWork.WalletRepository.UpdateAsync(wallet);
         }
     }
 }

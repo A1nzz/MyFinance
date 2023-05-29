@@ -8,6 +8,10 @@
         public int CategoryId { get; set; }
         public int WalletId { get; set; }
         public int Type { get; set; } //1 - +, 0 - -;
+
+        public int UserId { get; set; }
+
+        public Category? TransactionCategory { get; set; }
     }
 
 }

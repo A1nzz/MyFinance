@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,29 +20,39 @@ namespace Application.Services
             _unitOfWork = unitOfWork;
         }
 
-        public void Add(User user)
+        public Task AddAsync(User item)
         {
-            _unitOfWork.UserRepository.Add(user);
+            return _unitOfWork.UserRepository.AddAsync(item);
         }
 
-        public void Delete(User user)
+        public Task DeleteAsync(User item)
         {
-            _unitOfWork.UserRepository.Delete(user);
+            return _unitOfWork.UserRepository.DeleteAsync(item);
         }
 
-        public IReadOnlyList<User> GetAll()
+        public Task SaveChangesAsync()
         {
-            return _unitOfWork.UserRepository.ListAll();
+            return _unitOfWork.SaveAllAsync();
         }
 
-        public User GetById(int id)
+        public Task UpdateAsync(User item)
         {
-            return _unitOfWork.UserRepository.GetById(id);
+            return _unitOfWork.UserRepository.UpdateAsync(item);
         }
 
-        public void Update(User user)
+        Task<IReadOnlyList<User>> IBaseService<User>.GetAllAsync()
         {
-            _unitOfWork.UserRepository.Update(user);
+            return _unitOfWork.UserRepository.ListAllAsync();
+        }
+
+        Task<User> IBaseService<User>.GetByIdAsync(int id)
+        {
+            return _unitOfWork.UserRepository.GetByIdAsync(id);
+        }
+
+        public Task<User> FirstOrDefaultAsync(Expression<Func<User, bool>> filter, CancellationToken cancellationToken = default)
+        {
+            return _unitOfWork.UserRepository.FirstOrDefaultAsync(filter, cancellationToken);
         }
 
     }

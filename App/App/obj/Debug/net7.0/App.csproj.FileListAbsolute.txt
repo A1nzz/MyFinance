@@ -67,3 +67,6 @@ D:\MyFinance\App\App\bin\Debug\net7.0\Persistence.dll
 D:\MyFinance\App\App\bin\Debug\net7.0\Application.pdb
 D:\MyFinance\App\App\bin\Debug\net7.0\Domain.pdb
 D:\MyFinance\App\App\bin\Debug\net7.0\Persistence.pdb
+D:\MyFinance\App\App\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Json.dll
+D:\MyFinance\App\App\bin\Debug\net7.0\Serializers.dll
+D:\MyFinance\App\App\bin\Debug\net7.0\Serializers.pdb
